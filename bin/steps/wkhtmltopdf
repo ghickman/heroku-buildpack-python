@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+# This script serves as the wkthmltopdf build step of the
+# [**Python Buildpack**](https://github.com/heroku/heroku-buildpack-python)
+# compiler.
+#
+# A [buildpack](http://devcenter.heroku.com/articles/buildpacks) is an
+# adapter between a Python application and Heroku's runtime.
+#
+# This script is invoked by [`bin/compile`](/).
+
+# The location of the pre-compiled wkthmltopdf binary.
+VENDORED_WKHTMLTOPDF="http://wkhtmltopdf.googlecode.com/files/wkhtmltopdf-0.11.0_rc1-static-amd64.tar.bz2"
+
+# If pylibmc exists within requirements, use vendored libmemcached.
+if (grep -Fiq "django-wkhtmltopdf" requirements.txt) then
+    echo "-----> Noticed django-wkhtmltopdf, bootstrapping wkhtmltopdf."
+    cd .heroku
+
+    # Download and extract wkhtmltopdf into target vendor directory.
+    curl -s -L -o tmp-wkhtmltopdf.tar.gz $VENDORED_WKHTMLTOPDF
+    tar -zxvf tmp-wkhtmltopdf.tar.gz > /dev/null
+    rm tmp-wkhtmltopdf.tar.gz
+    export WKHTMLTOPDF=$(pwd)/vendor
+    cd ..
+fi
+
