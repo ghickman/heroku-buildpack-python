@@ -159,6 +159,10 @@ set -e
 # See [`bin/steps/pylibmc`](pylibmc.html).
 source $BIN_DIR/steps/pylibmc
 
+# wkhtmltopdf support.
+# See [`bin/steps/wkhtmltopdf`](wkthmltopdf.html).
+source $BIN_DIR/steps/wkhtmltopdf
+
 # Activate the Virtualenv.
 puts-step "Activating virtualenv"
 source $VIRTUALENV_LOC/bin/activate
