@@ -10,7 +10,7 @@
 # This script is invoked by [`bin/compile`](/).
 
 # The location of the pre-compiled wkthmltopdf binary.
-VENDORED_WKHTMLTOPDF="http://wkhtmltopdf.googlecode.com/files/wkhtmltopdf-0.11.0_rc1-static-amd64.tar.bz2"
+VENDORED_WKHTMLTOPDF="http://cl.ly/04343S061F402E1N0q3a/wkhtmltopdf-0.11.0_rc1-static-amd64.tar.gz"
 
 # If pylibmc exists within requirements, use vendored libmemcached.
 if (grep -Fiq "django-wkhtmltopdf" requirements.txt) then
