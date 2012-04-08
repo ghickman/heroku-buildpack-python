@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# This script serves as the geodjango (gdal, geos) build step of the
+# This script serves as the geodjango (gdal, geos, proj4) build step of the
 # [**Python Buildpack**](https://github.com/ghickman/heroku-buildpack-python)
 # compiler.
 #
@@ -9,12 +9,12 @@
 #
 # This script is invoked by [`bin/compile`](/).
 
-# The location of the pre-compiled gdal & geos binaries.
+# The location of the pre-compiled gdal, geos & proj.4 binaries.
 VENDORED_GDAL="https://s3.amazonaws.com/cirheroku/gdal-1.8.1-heroku.tar.gz"
 VENDORED_GEOS="https://s3.amazonaws.com/cirheroku/geos-3.3.2-herkou.tar.gz"
 VENDORED_PROJ4="https://s3.amazonaws.com/cirheroku/proj4-4.7.0-heroku.tar.gz"
 
-# If django.contrib.gis exists within requirements, use vendored gdal & geos.
+# If django.contrib.gis exists within requirements, use vendored gdal, geos & proj4.
 if (grep -Fiq "django.contrib.gis" requirements.txt) then
     echo "-----> Noticed gis, bootstrapping gdal & geos"
     cd .heroku
@@ -31,7 +31,7 @@ if (grep -Fiq "django.contrib.gis" requirements.txt) then
     rm tmp-geos.tar.gz
     export GEOS=$(pwd)/vendor
 
-    # Download and extract geos into target vendor directory.
+    # Download and extract proj4 into target vendor directory.
     curl -s -L -o tmp-proj4.tar.gz $VENDORED_PROJ4
     tar -zxvf tmp-proj4.tar.gz > /dev/null
     rm tmp-proj4.tar.gz
