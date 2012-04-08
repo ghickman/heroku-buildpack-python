@@ -159,6 +159,10 @@ set -e
 # See [`bin/steps/pylibmc`](pylibmc.html).
 source $BIN_DIR/steps/pylibmc
 
+# GeoDjango support.
+# see [`bin/steps/geodjango`](geodjango.html).
+source $BIN_DIR/steps/geodjango
+
 # wkhtmltopdf support.
 # See [`bin/steps/wkhtmltopdf`](wkthmltopdf.html).
 source $BIN_DIR/steps/wkhtmltopdf
