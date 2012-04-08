@@ -12,7 +12,7 @@
 # The location of the pre-compiled wkthmltopdf binary.
 VENDORED_WKHTMLTOPDF="http://cl.ly/04343S061F402E1N0q3a/wkhtmltopdf-0.11.0_rc1-static-amd64.tar.gz"
 
-# If pylibmc exists within requirements, use vendored libmemcached.
+# If django-wkhtmltopdf exists within requirements, use vendored wkhtmltopdf
 if (grep -Fiq "django-wkhtmltopdf" requirements.txt) then
     echo "-----> Noticed django-wkhtmltopdf, bootstrapping wkhtmltopdf."
     cd .heroku
