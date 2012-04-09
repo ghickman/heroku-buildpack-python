@@ -56,6 +56,8 @@ Set these options in your `settings.py` to specify the locations of GDAL & GEOS:
     GDAL_LIBRARY_PATH = '/app/.heroku/gdal/lib/libgdal.so'
     GEOS_LIBRARY_PATH = '/app/.heroku/geos/lib/libgeos_c.so'
 
+This portion of the buildpack is an updated version of https://github.com/cirlabs/heroku-buildpack-geodjango
+
 ### wkthmltopdf
 
 Looks for `django-wkthmltopdf` in your `requirements.txt` and installs wkhtmltopdf.
