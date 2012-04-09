@@ -47,8 +47,7 @@ Extras
 
 This Buildpack contains some extra steps for adding extra binaries to your Heroku App VM which were based upon Heroku's method of setting up memcached for pylibmc.
 
-GeoDjango
-~~~~~~~~~
+### GeoDjango
 
 Looks for `django.contrib.gis` in your `settings.py` and installs GDAL, GEOS & PROJ4.
 
@@ -57,8 +56,7 @@ Set these options in your `settings.py` to specify the locations of GDAL & GEOS:
     GDAL_LIBRARY_PATH = '/app/.heroku/gdal/lib/libgdal.so'
     GEOS_LIBRARY_PATH = '/app/.heroku/geos/lib/libgeos_c.so'
 
-wkthmltopdf
-~~~~~~~~~~~
+### wkthmltopdf
 
 Looks for `django-wkthmltopdf` in your `requirements.txt` and installs wkhtmltopdf.
 
