@@ -15,7 +15,7 @@ VENDORED_GEOS="https://s3.amazonaws.com/cirheroku/geos-3.3.2-herkou.tar.gz"
 VENDORED_PROJ4="https://s3.amazonaws.com/cirheroku/proj4-4.7.0-heroku.tar.gz"
 
 # If django.contrib.gis exists within requirements, use vendored gdal, geos & proj4.
-if (grep -Fiq "django.contrib.gis" requirements.txt) then
+if (grep -Fiq "django.contrib.gis" */settings.py) then
     echo "-----> Noticed gis, bootstrapping gdal & geos"
     cd .heroku
 
