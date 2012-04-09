@@ -1,3 +1,10 @@
+## v6a (09/04/2012)
+
+Features:
+
+* Add wkhtmltopdf support
+* Add GeoDjango support
+
 ## v6 (03/23/2012)
 
 Features:
