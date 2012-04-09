@@ -9,14 +9,14 @@
 #
 # This script is invoked by [`bin/compile`](/).
 
-# The location of the pre-compiled gdal, geos & proj.4 binaries.
+# The location of the pre-compiled gdal, geos & proj4 binaries.
 VENDORED_GDAL="https://s3.amazonaws.com/cirheroku/gdal-1.8.1-heroku.tar.gz"
 VENDORED_GEOS="https://s3.amazonaws.com/cirheroku/geos-3.3.2-herkou.tar.gz"
 VENDORED_PROJ4="https://s3.amazonaws.com/cirheroku/proj4-4.7.0-heroku.tar.gz"
 
 # If django.contrib.gis exists within requirements, use vendored gdal, geos & proj4.
 if (grep -Fiq "django.contrib.gis" */settings.py) then
-    echo "-----> Noticed gis, bootstrapping gdal & geos"
+    echo "-----> Noticed gis, bootstrapping gdal, geos & proj4"
     cd .heroku
 
     # Download and extract gdal into target vendor directory.
@@ -24,18 +24,21 @@ if (grep -Fiq "django.contrib.gis" */settings.py) then
     tar -zxvf tmp-gdal.tar.gz > /dev/null
     rm tmp-gdal.tar.gz
     export GDAL=$(pwd)/vendor
+    echo "----------> gdal installed"
 
     # Download and extract geos into target vendor directory.
     curl -s -L -o tmp-geos.tar.gz $VENDORED_GEOS
     tar -zxvf tmp-geos.tar.gz > /dev/null
     rm tmp-geos.tar.gz
     export GEOS=$(pwd)/vendor
+    echo "----------> geos installed"
 
     # Download and extract proj4 into target vendor directory.
     curl -s -L -o tmp-proj4.tar.gz $VENDORED_PROJ4
     tar -zxvf tmp-proj4.tar.gz > /dev/null
     rm tmp-proj4.tar.gz
     export PROJ4=$(pwd)/vendor
+    echo "----------> proj4 installed"
 
     cd ..
 fi
