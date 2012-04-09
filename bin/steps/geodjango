@@ -20,7 +20,7 @@ if (grep -Fiq "django.contrib.gis" */settings.py) then
     cd .heroku
 
     # Download and extract gdal into target vendor directory.
-    curl -s -L -o tmp-gdal $VENDORED_GDAL
+    curl -s -L -o tmp-gdal.tar.gz $VENDORED_GDAL
     tar -zxvf tmp-gdal.tar.gz > /dev/null
     rm tmp-gdal.tar.gz
     export GDAL=$(pwd)/vendor
